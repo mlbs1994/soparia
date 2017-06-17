@@ -6,6 +6,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -20,6 +21,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -46,7 +49,8 @@ public class Pedido implements Serializable {
     @Column(name = "idPedido")
     private Integer idPedido;
     @Column(name = "dataPedido")
-    private String dataPedido;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataPedido;
     @Column(name = "status")
     private String status;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -56,9 +60,9 @@ public class Pedido implements Serializable {
     private String formaPagamento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPedido")
     private List<ItemPedido> itemPedidoList;
-    @JoinColumn(name = "idBandeira", referencedColumnName = "idBandeira")
+    @JoinColumn(name = "idCartao", referencedColumnName = "idCartao")
     @ManyToOne
-    private Bandeira idBandeira;
+    private Cartao idCartao;
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     @ManyToOne(optional = false)
     private Cliente idCliente;
@@ -81,11 +85,11 @@ public class Pedido implements Serializable {
         this.idPedido = idPedido;
     }
 
-    public String getDataPedido() {
+    public Date getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPedido(String dataPedido) {
+    public void setDataPedido(Date dataPedido) {
         this.dataPedido = dataPedido;
     }
 
@@ -122,12 +126,12 @@ public class Pedido implements Serializable {
         this.itemPedidoList = itemPedidoList;
     }
 
-    public Bandeira getIdBandeira() {
-        return idBandeira;
+    public Cartao getIdCartao() {
+        return idCartao;
     }
 
-    public void setIdBandeira(Bandeira idBandeira) {
-        this.idBandeira = idBandeira;
+    public void setIdCartao(Cartao idCartao) {
+        this.idCartao = idCartao;
     }
 
     public Cliente getIdCliente() {

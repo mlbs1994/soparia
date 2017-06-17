@@ -8,6 +8,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -38,8 +39,8 @@ public class Bandeira implements Serializable {
     private Integer idBandeira;
     @Column(name = "nome")
     private String nome;
-    @OneToMany(mappedBy = "idBandeira")
-    private List<Pedido> pedidoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBandeira")
+    private List<Cartao> cartaoList;
 
     public Bandeira() {
     }
@@ -65,12 +66,12 @@ public class Bandeira implements Serializable {
     }
 
     @XmlTransient
-    public List<Pedido> getPedidoList() {
-        return pedidoList;
+    public List<Cartao> getCartaoList() {
+        return cartaoList;
     }
 
-    public void setPedidoList(List<Pedido> pedidoList) {
-        this.pedidoList = pedidoList;
+    public void setCartaoList(List<Cartao> cartaoList) {
+        this.cartaoList = cartaoList;
     }
 
     @Override

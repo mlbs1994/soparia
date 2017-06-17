@@ -46,7 +46,7 @@ public class ItemPedido implements Serializable {
     private Float subtotal;
     @JoinColumn(name = "idMenu", referencedColumnName = "idMenu")
     @ManyToOne(optional = false)
-    private Menu idMenu;
+    private Sopa idMenu;
     @JoinColumn(name = "idPedido", referencedColumnName = "idPedido")
     @ManyToOne(optional = false)
     private Pedido idPedido;
@@ -82,11 +82,11 @@ public class ItemPedido implements Serializable {
         this.subtotal = subtotal;
     }
 
-    public Menu getIdMenu() {
+    public Sopa getIdMenu() {
         return idMenu;
     }
 
-    public void setIdMenu(Menu idMenu) {
+    public void setIdMenu(Sopa idMenu) {
         this.idMenu = idMenu;
     }
 

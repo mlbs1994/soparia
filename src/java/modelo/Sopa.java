@@ -26,15 +26,16 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author saulo
  */
 @Entity
-@Table(name = "menu", catalog = "soparia", schema = "")
+@Table(name = "sopa", catalog = "soparia", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Menu.findAll", query = "SELECT m FROM Menu m")
-    , @NamedQuery(name = "Menu.findByIdMenu", query = "SELECT m FROM Menu m WHERE m.idMenu = :idMenu")
-    , @NamedQuery(name = "Menu.findByNome", query = "SELECT m FROM Menu m WHERE m.nome = :nome")
-    , @NamedQuery(name = "Menu.findByDescricao", query = "SELECT m FROM Menu m WHERE m.descricao = :descricao")
-    , @NamedQuery(name = "Menu.findByPreco", query = "SELECT m FROM Menu m WHERE m.preco = :preco")})
-public class Menu implements Serializable {
+    @NamedQuery(name = "Sopa.findAll", query = "SELECT s FROM Sopa s")
+    , @NamedQuery(name = "Sopa.findByIdMenu", query = "SELECT s FROM Sopa s WHERE s.idMenu = :idMenu")
+    , @NamedQuery(name = "Sopa.findByNome", query = "SELECT s FROM Sopa s WHERE s.nome = :nome")
+    , @NamedQuery(name = "Sopa.findByDescricao", query = "SELECT s FROM Sopa s WHERE s.descricao = :descricao")
+    , @NamedQuery(name = "Sopa.findByPreco", query = "SELECT s FROM Sopa s WHERE s.preco = :preco")
+    , @NamedQuery(name = "Sopa.findByImgSopa", query = "SELECT s FROM Sopa s WHERE s.imgSopa = :imgSopa")})
+public class Sopa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,13 +50,15 @@ public class Menu implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "preco")
     private Float preco;
+    @Column(name = "imgSopa")
+    private String imgSopa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMenu")
     private List<ItemPedido> itemPedidoList;
 
-    public Menu() {
+    public Sopa() {
     }
 
-    public Menu(Integer idMenu) {
+    public Sopa(Integer idMenu) {
         this.idMenu = idMenu;
     }
 
@@ -91,6 +94,14 @@ public class Menu implements Serializable {
         this.preco = preco;
     }
 
+    public String getImgSopa() {
+        return imgSopa;
+    }
+
+    public void setImgSopa(String imgSopa) {
+        this.imgSopa = imgSopa;
+    }
+
     @XmlTransient
     public List<ItemPedido> getItemPedidoList() {
         return itemPedidoList;
@@ -110,10 +121,10 @@ public class Menu implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Menu)) {
+        if (!(object instanceof Sopa)) {
             return false;
         }
-        Menu other = (Menu) object;
+        Sopa other = (Sopa) object;
         if ((this.idMenu == null && other.idMenu != null) || (this.idMenu != null && !this.idMenu.equals(other.idMenu))) {
             return false;
         }
@@ -122,7 +133,7 @@ public class Menu implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Menu[ idMenu=" + idMenu + " ]";
+        return "modelo.Sopa[ idMenu=" + idMenu + " ]";
     }
     
 }
