@@ -58,6 +58,10 @@ public class ItemPedido implements Serializable {
         this.idItemPedido = idItemPedido;
     }
 
+    public ItemPedido(Sopa Sopa, int quantidade, Pedido pedido) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Integer getIdItemPedido() {
         return idItemPedido;
     }

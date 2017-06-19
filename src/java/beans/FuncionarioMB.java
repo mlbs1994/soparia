@@ -1,6 +1,6 @@
 package beans;
 
-import servico.FuncionarioServico;
+import persistencia.FuncionarioServico;
 import java.text.ParseException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

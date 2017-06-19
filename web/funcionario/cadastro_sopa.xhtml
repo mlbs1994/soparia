@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{msgs.funcSopa}</title>
+    </h:head>
+    <h:body>
+
+        <ui:decorate template="/templates/funcionarioDecorator.xhtml">
+            <h2>#{msgs.funcSopa}</h2>
+            <br/>
+            <br/>
+            <div id="box">
+            <table cellpadding="0" cellspacing="10px">
+                <tr>
+                    <td>
+                        <h:form enctype="multipart/form-data" id="formGeral">
+                            <p:growl id="msgs" showDetail="true" autoUpdate="true" for="destinoAviso"/>
+                            <p:fieldset class="field" legend="Inserir sopas" style="margin-bottom:20px">
+                                <h:panelGrid columns="2">
+                                    Nome: <h:inputText value="#{sopaMB.sopa.nome}" size="40"/>
+                                    Preço: <h:inputText value="#{sopaMB.sopa.preco}" size="40"/>
+                                    Descrição: <h:inputTextarea rows="4" cols="40" value="#{sopaMB.sopa.descricao}"/>
+
+                                    Foto: <p:fileUpload fileUploadListener="#{sopaMB.uploadAction}" label="Escolha" update="messages" auto="true" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png|pdf)$/" />
+                                    <p:growl id="messages" showDetail="true"/>
+                                    
+                                    <h:commandButton action="#{sopaMB.salvar}" value="Salvar" class="botao"/>
+                                </h:panelGrid> 
+                            </p:fieldset>
+                        </h:form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h:form enctype="multpart/form-data" id="formMenu">
+                            <p:fieldset class="field" legend="Sopas Cadastrados" style="margin-bottom:20px">
+                                <p:dataTable var="sopa" value="#{sopaMB.sopas}" editable="true" editMode="cell">
+                                    <p:column>
+                                        <f:facet name="header">Foto</f:facet>
+                                        <h:graphicImage value="/imagens/#{sopa.imagem}" width="170" height="100"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Nome</f:facet>
+                                        <h:outputText value="#{sopa.nome}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Preço</f:facet>
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{sopa.preco}" /></f:facet>
+                                            <f:facet name="input"><p:inputText value="#{sopa.preco}"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Descrição</f:facet>
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{sopa.descricao}" /></f:facet>
+                                            <f:facet name="input"><p:inputText value="#{sopa.descricao}"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Atualizar</f:facet>
+                                        <h:commandButton value="Atualizar" action="#{sopaMB.atualizar(sopa)}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Excluir</f:facet>
+                                        <h:commandButton value="Excluir" action="#{sopaMB.excluir(sopa)}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:fieldset>
+                        </h:form>
+
+                    </td>
+                </tr>
+            </table>
+            </div>
+        </ui:decorate>
+        
+    </h:body>
+</html>
+

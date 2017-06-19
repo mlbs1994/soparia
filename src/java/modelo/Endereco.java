@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.io.Serializable;
@@ -71,6 +66,10 @@ public class Endereco implements Serializable {
         this.bairro = bairro;
         this.cidade = cidade;
         this.cep = cep;
+    }
+
+    public Endereco(String tipologradouro, String logradouro, int numero, String cep, String cidade, String estado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Integer getIdEndereco() {

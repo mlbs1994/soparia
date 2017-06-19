@@ -8,8 +8,8 @@ import javax.faces.bean.SessionScoped;
 import modelo.ItemPedido;
 import modelo.Pedido;
 import modelo.Sopa;
-import servico.ClienteServico;
-import servico.PedidoServico;
+import persistencia.ClienteServico;
+import persistencia.PedidoServico;
 
 @ManagedBean(name = "pedidoMB")
 @SessionScoped

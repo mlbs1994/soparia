@@ -6,6 +6,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -65,6 +66,10 @@ public class Cartao implements Serializable {
         this.idCartao = idCartao;
         this.numero = numero;
         this.codigoSeguranca = codigoSeguranca;
+    }
+
+    public Cartao(Bandeira bandMan, String numeroCartao, Date validade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Integer getIdCartao() {

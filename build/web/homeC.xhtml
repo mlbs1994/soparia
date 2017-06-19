@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{msgs.titleHome}</title>
+    </h:head>
+    <h:body>
+
+        <ui:decorate template="/templates/clienteDecorator.xhtml">
+             <h2>#{msgs.artigoHome}</h2>
+             <br/>
+             <br/>
+             <div id="box">
+                <h:form id="formMenu">
+                    <p:growl id="msgs" showDetail="true" for="destinoAviso" autoUpdate="true"/>
+
+                    <p:accordionPanel value="#{tabbedView.sopas}" var="sopa">
+                        <p:ajax event="tabChange" listener="#{tabbedView.onTabChange}" update=":formMenu:msgs" />
+                        <p:ajax event="tabClose" listener="#{tabbedView.onTabClose}" update=":formMenu:msgs" />
+
+                        <p:tab title="#{sopa.nome}">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:panelGrid columns="2" cellpadding="5">
+
+                                    <p:outputLabel for="preco" value="#{msgs.cardapioPreco}" style="font-weight: bold"/>
+                                    <h:outputText id="preco" value="#{sopa.preco}">
+                                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+                                    </h:outputText>
+
+                                    <p:outputLabel for="descricao" value="#{msgs.cardapioDescricao}" style="font-weight: bold"/>
+                                    <h:outputText id="descricao" value="#{sopa.descricao}"/>
+
+                                    <p:outputLabel for="numero" value="#{msgs.cardapioQuantidade}" style="font-weight: bold"/>
+                                    <p:selectOneMenu id="numero" value="#{tabbedView.numero}">
+                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                    </p:selectOneMenu>
+                                    
+
+                                </h:panelGrid>
+                                <h:graphicImage class="fotoSopa" value="/imagens/#{sopa.imagem}" width="200px" height="150px"/>
+                                <h:commandButton id="add" class="botao" value="#{msgs.cardapioAdd}" action="#{tabbedView.adicionaItem(sopa.nome,'homeC')}" />        
+                            </h:panelGrid>
+                        </p:tab>
+
+                    </p:accordionPanel>
+
+                    <p:fieldset class="field" legend="#{msgs.cardapioItens}" style="margin-bottom:20px">
+                        <p:dataTable var="item" value="#{tabbedView.itens}" >
+                            <p:column>
+                                <f:facet name="header">#{msgs.cardapioSopa}</f:facet>
+                                <h:outputText value="#{item.sopa.nome}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">#{msgs.cardapioQuantidade}</f:facet>
+                                <h:outputText value="#{item.quantidade}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Subtotal</f:facet>
+                                <h:outputText value="R$ #{item.subtotal}"/>
+                            </p:column> 
+                            <p:column>
+                                <f:facet name="header">Excluir item</f:facet>
+                                <h:commandButton value="Excluir" action="#{tabbedView.excluiItem(item,'homeC')}"/>
+                            </p:column>
+                        </p:dataTable>
+
+                        <p:outputLabel for="total" value="#{msgs.cardapioTotal}" style="font-weight: bold"/>
+                        <h:outputText id="total" value="#{tabbedView.pedido.total}" style="font-weight: bold"/><br/>
+                    
+                        <h:commandButton id="fecharC" class="botao" value="#{msgs.cardapioFecha}" action="#{tabbedView.fechaPedido(loginBean.retornaUsuario())}" />
+                    </p:fieldset>
+
+                    
+                </h:form>
+
+            </div>
+         
+      </ui:decorate>
+                     
+    </h:body>
+</html>
+

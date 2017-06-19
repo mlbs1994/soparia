@@ -58,6 +58,10 @@ public class Funcionario implements Serializable {
         this.idFuncionario = idFuncionario;
     }
 
+    public Funcionario(String nome, String senha, String telefone, Endereco endereco) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Integer getIdFuncionario() {
         return idFuncionario;
     }

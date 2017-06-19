@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ie="http://xmlns.jcp.org/jsf/composite/iee">
+    
+    <h:head>
+        <title>#{msgs.titleLogin}</title> 
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+
+        <ui:decorate template="/templates/masterDecorator.xhtml">
+            
+            <!-- Contents to be decorated -->
+            
+                <h:form id="login" class="formGeral">
+                    <p:fieldset class="field" legend="Login" >
+                        <p:growl id="growl" for="destinoAviso" showDetail="true" life="2000" autoUpdate="true"/>
+                        <ie:logincomp  logiee="#{loginBean}"/>
+                        <div id="box">
+                            <p:contentFlow value="#{imagesView.images}" var="image">
+                                <p:graphicImage name="images/demo/#{image}" styleClass="content" />
+                                
+                            </p:contentFlow>
+                        </div>                        
+                    </p:fieldset>
+                </h:form>
+            
+        </ui:decorate>
+    </h:body>
+</html>

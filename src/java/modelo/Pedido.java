@@ -174,5 +174,17 @@ public class Pedido implements Serializable {
     public String toString() {
         return "modelo.Pedido[ idPedido=" + idPedido + " ]";
     }
+
+    public void addItem(ItemPedido ip) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setCliente(Cliente byId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void removeItem(ItemPedido item) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

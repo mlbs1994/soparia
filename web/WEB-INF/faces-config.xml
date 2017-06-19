@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <application>
+        <locale-config>
+            <default-locale>pt_BR</default-locale>
+            <supported-locale>pt_BR</supported-locale>
+            <supported-locale>en_US</supported-locale>
+        </locale-config>
+
+        <resource-bundle>
+            <base-name>extras.messages</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+    </application>
+    
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>homeC</from-outcome>
+            <to-view-id>/cliente/homeC.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>pedidos</from-outcome>
+            <to-view-id>/funcionario/pedidos.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cliente</from-outcome>
+            <to-view-id>/cadastro_cliente.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/cadastro_cliente.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cliente</from-outcome>
+            <to-view-id>/cadastro_cliente.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>sair</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>        
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>sopa</from-outcome>
+            <to-view-id>/funcionario/cadastro_sopa.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>homeF</from-outcome>
+            <to-view-id>/funcionario/cadastro_funcionario.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>  
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>pedidos</from-outcome>
+            <to-view-id>/funcionario/pedidos.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>            
+    
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>homeC</from-outcome>
+            <to-view-id>/cliente/homeC.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+
+    <navigation-case>
+        <from-outcome>login</from-outcome>
+        <to-view-id>/login.xhtml</to-view-id>
+    </navigation-case>        
+    
+    <navigation-case>
+        <from-outcome>home</from-outcome>
+        <to-view-id>/home.xhtml</to-view-id>
+    </navigation-case>    
+
+</faces-config>

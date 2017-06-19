@@ -1,15 +1,16 @@
-package modelo;
+package beans;
 
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.*;
+import static javax.swing.text.StyleConstants.Size;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @NamedQuery(name = "Sopa.RetornaId",query= " SELECT max(u.id) FROM Sopa u WHERE u.nome = :nome")
-@Table(name = "TB_PRATO")
+@Table(name = "TB_SOPA")
 public class Sopa implements Serializable, BaseEntity {
     private static final long serialVersionUID = 1L;
     
@@ -27,26 +28,26 @@ public class Sopa implements Serializable, BaseEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_PRATO")
+    @Column(name = "ID_SOPA")
     private Long id;
     
     @NotBlank
     @Size(min = 3, max = 30)
-    @Column(name = "PRATO_NOME")
+    @Column(name = "SOPA_NOME")
     private String nome;
     
     @NotNull
     @Min(0)
-    @Column(name = "PRATO_PRECO")
+    @Column(name = "SOPA_PRECO")
     private Double preco;
     
     @NotBlank
     @Size(min = 3, max = 300)
-    @Column(name = "PRATO_DESCRICAO")
+    @Column(name = "SOPA_DESCRICAO")
     private String descricao;
     
     //Nome da imagem, no diretório imagens
-    @Column(name = "PRATO_IMAGEM")
+    @Column(name = "SOPA_IMAGEM")
     private String imagem;
     
     @Transient

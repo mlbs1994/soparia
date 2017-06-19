@@ -1,6 +1,6 @@
 package beans;
 
-//import servico.ClienteServico;
+import persistencia.ClienteServico;
 import java.text.ParseException;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
@@ -8,10 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import modelo.Bandeira;
-//import modelo.Cartao;
+import modelo.Cartao;
 import modelo.Cliente;
 import modelo.Endereco;
-//import servico.BandeiraServico;
+import persistencia.BandeiraServico;
 
 @ManagedBean(name = "cadastroC")
 @SessionScoped
@@ -141,7 +141,7 @@ public class ClienteMB{
             Cliente cliente = new Cliente(nome, senha, telefone, endereco, cartao);
             
             if (cli.salvar(cliente)) {
-                this.adicionaMensagem("Cadastro realizado com sucesso! Realize login!","destinoAviso");
+                this.adicionaMensagem("Cadastro realizado com sucesso! Refaça o login!","destinoAviso");
                 return "login";
             } else {
                 this.adicionaMensagem("Já existe um usuario com este login (telefone)!","destinoAviso");

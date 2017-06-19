@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{msgs.funcPedidos}</title>
+    </h:head>
+    <h:body>
+
+        <ui:decorate template="/templates/funcionarioDecorator.xhtml">
+            <h2>#{msgs.funcPedidos}</h2>
+            <br/>
+            <br/>
+
+            <table>
+                <tr>
+                    <td>
+                        <h:form class="formGeral">
+                            <p:fieldset class="field" legend="#{msgs.pedidosParaAtender}" style="margin-bottom:20px">
+                                <p:dataTable var="pedido" value="#{pedidoMB.pedidosNAtendidos}" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+                                    <p:column>
+                                        <f:facet name="header">ID</f:facet>
+                                        <h:outputText value="#{pedido.id}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosCliente}</f:facet>
+                                        <h:outputText value="#{pedido.cliente.nome}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosEndereço}</f:facet>
+                                        <h:outputText value="#{pedido.imprimeEndereco()}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosData}</f:facet>
+                                        <h:outputText value="#{pedido.data}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosTotal}</f:facet>
+                                        <h:outputText value="#{pedido.total}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosItens}</f:facet>
+                                        <h:outputText value="#{pedido.imprimeItens()}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosAtender}</f:facet>
+                                        <h:commandButton value="Atender" action="#{pedidoMB.atendePedido(pedido.id)}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:fieldset>
+                        </h:form>
+                    </td>    
+                </tr>
+
+                <tr>
+                    <td>
+                        <h:form class="formGeral">
+                            <p:fieldset class="field" legend="#{msgs.pedidosAtendidos}" style="margin-bottom:20px">
+                                <p:dataTable var="pedido" value="#{pedidoMB.pedidosAtendidos}" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+                                    <p:column>
+                                        <f:facet name="header">ID</f:facet>
+                                        <h:outputText value="#{pedido.id}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosCliente}</f:facet>
+                                        <h:outputText value="#{pedido.cliente.nome}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosData}</f:facet>
+                                        <h:outputText value="#{pedido.data}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">#{msgs.pedidosTotal}</f:facet>
+                                        <h:outputText value="#{pedido.total}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:fieldset>
+                        </h:form>
+                    </td>    
+                </tr>
+
+            </table>
+        </ui:decorate>         
+    </h:body>
+</html>
+

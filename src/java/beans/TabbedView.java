@@ -15,8 +15,8 @@ import modelo.Usuario;
  
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
-import servico.PedidoServico;
-import servico.SopaServico;
+import persistencia.PedidoServico;
+import persistencia.SopaServico;
  
 @ManagedBean
 @SessionScoped

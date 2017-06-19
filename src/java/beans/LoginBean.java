@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import modelo.Usuario;
-import servico.UsuarioServico;
+import persistencia.UsuarioServico;
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
@@ -41,8 +41,8 @@ public class LoginBean implements Serializable{
         this.nome = nome;
     }
 
-    //methodo p/ verificar se o telefone pertence a usuário válido.
-    //tb verifica se a senha fornecida, com a senha gravada
+    //metodo p/ verificar se o telefone Q pertence ao usuário é válido.
+    //tb verifica se a senha fornecida é igual a senha gravada
     public boolean validaUsuario()throws SQLException{
         UsuarioServico ud = new UsuarioServico();
         try {

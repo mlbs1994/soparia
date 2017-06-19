@@ -63,6 +63,10 @@ public class Cliente implements Serializable {
         this.idCliente = idCliente;
     }
 
+    public Cliente(String nome, String senha, String telefone, Endereco endereco, Cartao cartao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Integer getIdCliente() {
         return idCliente;
     }
