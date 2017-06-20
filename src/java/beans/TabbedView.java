@@ -11,8 +11,6 @@ import modelo.Cliente;
 import modelo.ItemPedido;
 import modelo.Pedido;
 import modelo.Sopa;
-import modelo.Usuario;
- 
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
 import persistencia.PedidoServico;
@@ -109,7 +107,7 @@ public class TabbedView {
         return "login";
     }
     
-    public String fechaPedido(Usuario usu){
+    public String fechaPedido(Cliente usu){
         this.pedido.setCliente((Cliente) usu);
         PedidoServico pedidoServico = new PedidoServico();
         

@@ -7,7 +7,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import modelo.Cliente;
+import modelo.Funcionario;
 import modelo.Usuario;
+import persistencia.ClienteServico;
+import persistencia.FuncionarioServico;
 import persistencia.UsuarioServico;
 
 @ManagedBean(name = "loginBean")
@@ -53,14 +57,34 @@ public class LoginBean implements Serializable{
         }
     }
     
-    public Usuario retornaUsuario()throws SQLException{
-        UsuarioServico ud = new UsuarioServico();
-        try {
-            Usuario usu = ud.retornaUsuario(this.telefone);
-            return usu;
-        } catch (Exception e) {
-            return null;
+    public Usuario retornaUsuario(String tipoUsuario)throws SQLException{
+        
+        Usuario us = null;
+        
+        if(tipoUsuario=="Cliente")
+        {
+             ClienteServico cs = new ClienteServico();
+            
+            try {
+                us = (Cliente) cs.retornaUsuario(this.telefone);
+            } catch (Exception e) {
+                return null;
+            }
+            
         }
+        else if(tipoUsuario=="Funcionario")
+        {
+            FuncionarioServico fs = new FuncionarioServico();
+            
+            try {
+                us = (Funcionario) fs.retornaUsuario(this.telefone);
+                
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        
+        return us;
     }
     
     public String doLogin() throws FacesException,ExceptionInInitializerError,SQLException{

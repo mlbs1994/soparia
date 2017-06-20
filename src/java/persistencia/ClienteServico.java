@@ -14,12 +14,7 @@ public class ClienteServico extends UsuarioServico{
     public ClienteServico() {
         super();
     }
-    
-    @Override
-    public Cliente getById(long pk) {
-        return (Cliente) super.getById(pk);
-    }
-
+   
     public boolean salvar(Cliente cliente) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }

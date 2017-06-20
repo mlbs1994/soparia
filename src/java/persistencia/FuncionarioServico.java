@@ -8,13 +8,11 @@ package persistencia;
 import modelo.Funcionario;
 import javax.persistence.EntityManager;
 
-public class FuncionarioServico extends DAOGenericoJPA<Long,Funcionario>{
+public class FuncionarioServico extends UsuarioServico{
 
     public FuncionarioServico() {
         super();
     }
     
-    public Funcionario getById(long pk) {
-        return super.getById(pk);
-    }
+  
 }
